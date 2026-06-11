@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|solutionrelative:project01\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|c:\\users\\malak\\onedrive\\desktop\\hospital management system\\solution01\\project01\\model\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|solutionrelative:project01\\model\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|c:\\users\\malak\\onedrive\\desktop\\hospital management system\\solution01\\project01\\hospitalcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|solutionrelative:project01\\hospitalcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -25,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|c:\\users\\malak\\onedrive\\desktop\\hospital management system\\solution01\\project01\\model\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|solutionrelative:project01\\model\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|c:\\users\\malak\\onedrive\\desktop\\hospital management system\\solution01\\project01\\model\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|solutionrelative:project01\\model\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +42,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "AvailableSlot.cs",
               "DocumentMoniker": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\AvailableSlot.cs",
               "RelativeDocumentMoniker": "project01\\Model\\AvailableSlot.cs",
@@ -54,7 +54,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "MedicalRecord.cs",
               "DocumentMoniker": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\MedicalRecord.cs",
               "RelativeDocumentMoniker": "project01\\Model\\MedicalRecord.cs",
@@ -66,7 +66,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Appointment.cs",
               "DocumentMoniker": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\Appointment.cs",
               "RelativeDocumentMoniker": "project01\\Model\\Appointment.cs",
@@ -78,7 +78,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Doctor.cs",
               "DocumentMoniker": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\Doctor.cs",
               "RelativeDocumentMoniker": "project01\\Model\\Doctor.cs",
@@ -90,25 +90,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Patient.cs",
               "DocumentMoniker": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\Patient.cs",
               "RelativeDocumentMoniker": "project01\\Model\\Patient.cs",
               "ToolTip": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\Patient.cs",
               "RelativeToolTip": "project01\\Model\\Patient.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-11T05:40:07.376Z"
+              "WhenOpened": "2026-06-11T05:40:07.376Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "HospitalContext.cs",
               "DocumentMoniker": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\HospitalContext.cs",
               "RelativeDocumentMoniker": "project01\\HospitalContext.cs",
               "ToolTip": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\HospitalContext.cs",
               "RelativeToolTip": "project01\\HospitalContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA4AAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-11T05:39:43.324Z",
               "EditorCaption": ""
@@ -121,7 +122,7 @@
               "RelativeDocumentMoniker": "project01\\Program.cs",
               "ToolTip": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Program.cs",
               "RelativeToolTip": "project01\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBQAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-11T05:35:58.467Z",
               "EditorCaption": ""

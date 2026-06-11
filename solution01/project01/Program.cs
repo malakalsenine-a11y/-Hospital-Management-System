@@ -46,6 +46,48 @@ namespace project01
 
         
         }
+
+        public static void AddNewDoctor(HospitalContext context)
+        {
+            Console.WriteLine("Enter Doctor Name: ");
+            string nameDoctor = Console.ReadLine();
+
+
+            Console.WriteLine("Enter Doctor Specialization: ");
+            string specializationDoctor = Console.ReadLine();
+
+            Console.WriteLine("Enter Doctor Phone: ");
+            string phoneDoctor = Console.ReadLine();
+
+            Console.WriteLine("Enter Doctor Email: ");
+            string emailDoctor = Console.ReadLine();
+
+            Console.WriteLine("Enter ConsultationFee: ");
+            string consultationFeeDoctor = Console.ReadLine();
+
+            int doctorId = (context.Doctors.Count) + 1;
+
+            Console.WriteLine("Doctor Added Successfully with ID" + doctorId);
+
+
+        }
+
+        public static void ViewAllPatients (HospitalContext context)
+        {
+            foreach( var patient in context.Patients)
+            {
+                if (patient.patientId == 0)
+                {
+                    Console.WriteLine("No Patient");
+                }
+
+                else
+                {
+                    Console.WriteLine($" The Patien Id : {patient.patientId} , the name is : {patient.patientName}, the age is: {patient.patientAge}, the gender is: {patient.patientGender} , the phine number is: {patient.patientPhone}, the email is:{patient.patientEmail}, the Blood Type is: {patient.patientBloodType}  ");
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
             //Data storge for the system
@@ -64,5 +106,4 @@ namespace project01
 }
 
 
-// public int patientId { get; set; }
 
