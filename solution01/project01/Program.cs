@@ -1,4 +1,5 @@
 ﻿using project01.Model;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Channels;
 
 namespace project01
@@ -94,19 +95,63 @@ namespace project01
             Console.WriteLine("The Specialization: ");
             string theSpecialization = Console.ReadLine();
 
+            bool found = false;
+
             foreach (var doctor in context.Doctors)
             {
                 if(doctor.doctorSpecialization == theSpecialization)
                 {
-                    Console.WriteLine("No Doctot Found!");
-                }
-                else
-                {
                     Console.WriteLine($"The Doctor Id is: {doctor.doctorId} , The Name is : {doctor.doctorName} , The Doctor Email is : {doctor.doctorEmail} , The Doctor Phone is: {doctor.doctorPhone} , The Doctor Specialization : {doctor.doctorSpecialization} , The Doctor ConsultationFee {doctor.consultationFee}");
+                    found = true;
+                }
+                if (found == false)
+                {
+                    Console.WriteLine("No Doctot Found!");
+
                 }
             }
         }
 
+        public static void AddAvailableTimeSlotForDoctor(HospitalContext context)
+        {
+            Console.WriteLine("Enter Doctor Id:");
+            int doctorId = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter Date:");
+            string data = Console.ReadLine();
+
+            Console.WriteLine("Enter Time:");
+            string time = Console.ReadLine();
+
+            int idSlot = (context.Patients.Count) + 1;
+
+
+            context.AvailableSlots.Add(new AvailableSlot
+            {
+                slotId = idSlot,
+                doctorId = doctorId,
+                slotDate = data,
+                slotTime = time,
+                isBooked = false
+            });
+
+
+            Console.WriteLine($"The system confirms the slot has been added, Slot ID :{idSlot} with {doctorId} " );
+
+        }
+
+        public static void BookAnAppointment(HospitalContext context)
+        {
+            Console.WriteLine("Enter Patient Id:");
+            int idPatient = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter Doctor Id:");
+            int idDoctor = int.Parse(Console.ReadLine());
+
+
+
+
+        }
         static void Main(string[] args)
         {
             //Data storge for the system
@@ -123,6 +168,5 @@ namespace project01
         }
     }
 }
-
 
 
