@@ -1,4 +1,5 @@
 ﻿using project01.Model;
+using System.Threading.Channels;
 
 namespace project01
 {
@@ -84,6 +85,24 @@ namespace project01
                 else
                 {
                     Console.WriteLine($" The Patien Id : {patient.patientId} , the name is : {patient.patientName}, the age is: {patient.patientAge}, the gender is: {patient.patientGender} , the phine number is: {patient.patientPhone}, the email is:{patient.patientEmail}, the Blood Type is: {patient.patientBloodType}  ");
+                }
+            }
+        }
+
+        public static void ViewAllDoctorBySpecializtion(HospitalContext context)
+        {
+            Console.WriteLine("The Specialization: ");
+            string theSpecialization = Console.ReadLine();
+
+            foreach (var doctor in context.Doctors)
+            {
+                if(doctor.doctorSpecialization == theSpecialization)
+                {
+                    Console.WriteLine("No Doctot Found!");
+                }
+                else
+                {
+                    Console.WriteLine($"The Doctor Id is: {doctor.doctorId} , The Name is : {doctor.doctorName} , The Doctor Email is : {doctor.doctorEmail} , The Doctor Phone is: {doctor.doctorPhone} , The Doctor Specialization : {doctor.doctorSpecialization} , The Doctor ConsultationFee {doctor.consultationFee}");
                 }
             }
         }
