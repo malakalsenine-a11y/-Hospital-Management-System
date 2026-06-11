@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace project01
 {
-    internal class HospitalContext
+    public class HospitalContext
     {
     }
 }

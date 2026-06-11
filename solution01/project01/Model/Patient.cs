@@ -6,7 +6,26 @@ using System.Threading.Tasks;
 
 namespace project01.Model
 {
-    internal class Patient
+    public class Patient
     {
+        public int patientId { get; set; }
+
+        public string patientName { get; set; }
+
+        public int patientAge { get; set; }
+
+        public string patientGender { get; set; }
+
+        public string patientPhone { get; set; }
+
+        public string patientEmail { get; set; }
+
+        public string patientBloodType { get; set; }
+
+
+
+
+
+
     }
 }

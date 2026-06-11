@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace project01.Model
 {
-    internal class AvailableSlot
+    public class AvailableSlot
     {
     }
 }

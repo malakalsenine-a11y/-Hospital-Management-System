@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C0FF2A16-9D2B-42F5-866A-BB7693D981AD}|project01\\project01.csproj|c:\\users\\malak\\onedrive\\desktop\\hospital management system\\solution01\\project01\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0FF2A16-9D2B-42F5-866A-BB7693D981AD}|project01\\project01.csproj|solutionrelative:project01\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|c:\\users\\malak\\onedrive\\desktop\\hospital management system\\solution01\\project01\\model\\availableslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|solutionrelative:project01\\model\\availableslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|c:\\users\\malak\\onedrive\\desktop\\hospital management system\\solution01\\project01\\model\\medicalrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|solutionrelative:project01\\model\\medicalrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|c:\\users\\malak\\onedrive\\desktop\\hospital management system\\solution01\\project01\\model\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|solutionrelative:project01\\model\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|c:\\users\\malak\\onedrive\\desktop\\hospital management system\\solution01\\project01\\model\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|solutionrelative:project01\\model\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|c:\\users\\malak\\onedrive\\desktop\\hospital management system\\solution01\\project01\\model\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|solutionrelative:project01\\model\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|c:\\users\\malak\\onedrive\\desktop\\hospital management system\\solution01\\project01\\hospitalcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|solutionrelative:project01\\hospitalcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|c:\\users\\malak\\onedrive\\desktop\\hospital management system\\solution01\\project01\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9D6A0C5-5CFE-1966-563C-1AF6FDF81136}|project01\\project01.csproj|solutionrelative:project01\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,6 +43,84 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "AvailableSlot.cs",
+              "DocumentMoniker": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\AvailableSlot.cs",
+              "RelativeDocumentMoniker": "project01\\Model\\AvailableSlot.cs",
+              "ToolTip": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\AvailableSlot.cs",
+              "RelativeToolTip": "project01\\Model\\AvailableSlot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T05:41:19.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MedicalRecord.cs",
+              "DocumentMoniker": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\MedicalRecord.cs",
+              "RelativeDocumentMoniker": "project01\\Model\\MedicalRecord.cs",
+              "ToolTip": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\MedicalRecord.cs",
+              "RelativeToolTip": "project01\\Model\\MedicalRecord.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T05:40:59.729Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Appointment.cs",
+              "DocumentMoniker": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\Appointment.cs",
+              "RelativeDocumentMoniker": "project01\\Model\\Appointment.cs",
+              "ToolTip": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\Appointment.cs",
+              "RelativeToolTip": "project01\\Model\\Appointment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T05:40:43.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Doctor.cs",
+              "DocumentMoniker": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\Doctor.cs",
+              "RelativeDocumentMoniker": "project01\\Model\\Doctor.cs",
+              "ToolTip": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\Doctor.cs",
+              "RelativeToolTip": "project01\\Model\\Doctor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T05:40:22.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Patient.cs",
+              "DocumentMoniker": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\Patient.cs",
+              "RelativeDocumentMoniker": "project01\\Model\\Patient.cs",
+              "ToolTip": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Model\\Patient.cs",
+              "RelativeToolTip": "project01\\Model\\Patient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T05:40:07.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HospitalContext.cs",
+              "DocumentMoniker": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\HospitalContext.cs",
+              "RelativeDocumentMoniker": "project01\\HospitalContext.cs",
+              "ToolTip": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\HospitalContext.cs",
+              "RelativeToolTip": "project01\\HospitalContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T05:39:43.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Program.cs",
               "RelativeDocumentMoniker": "project01\\Program.cs",

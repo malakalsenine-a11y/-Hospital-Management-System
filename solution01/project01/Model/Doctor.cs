@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace project01.Model
 {
-    internal class Doctor
+    public class Doctor
     {
     }
 }
