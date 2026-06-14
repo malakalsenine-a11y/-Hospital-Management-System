@@ -208,6 +208,30 @@ namespace project01
             Console.WriteLine("Invalid Slot ID.");
         }
 
+        public static void CancelAnAppointment(HospitalContext context)
+        {
+            Console.WriteLine("Enter Appointment Id: ");
+            int idAppointment = int.Parse(Console.ReadLine());
+
+            foreach(var Appointment in context.Appointments)
+                
+            {
+                if (Appointment.appointmentId == idAppointment)
+                {  
+                    
+                if(Appointment.status == "Cancelled")
+                
+                    Console.WriteLine(" The Appointments already Cancelled");
+                }
+
+                Appointment.status = "Cancelled";
+
+
+            }
+
+
+            }
+        
 
 
 
