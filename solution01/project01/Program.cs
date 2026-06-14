@@ -233,9 +233,6 @@ namespace project01
             Console.WriteLine("Appointment not found.");
         }
 
-
-            
-
         public static void CreateMedicalRecordAfterVisit(HospitalContext context)
         {
             Console.WriteLine("Enter Appointment Id");
@@ -273,14 +270,6 @@ namespace project01
             Console.WriteLine("Appointment not found.");
         }
 
-
-
-
-
-
-
-
-
         static void Main(string[] args)
 {
     //Data storge for the system
@@ -290,7 +279,83 @@ namespace project01
     mainContext.Appointments = new List<Appointment>();
     mainContext.MedicalRecords = new List<MedicalRecord>();
     mainContext.AvailableSlots = new List<AvailableSlot>();
-}
+
+            bool exit = false;
+            while(exit = false)
+            {
+
+                Console.WriteLine("Welcome to the  Hospital Management System! ");
+                Console.WriteLine("Please select option:");
+
+                Console.WriteLine("01- Patient Registration");
+                Console.WriteLine("02- Add New Doctor");
+                Console.WriteLine("03- View All Patients");
+                Console.WriteLine("04- View All Doctor By Specializtion");
+                Console.WriteLine("05- Add Available Time Slot For Doctor");
+                Console.WriteLine("06- Book An Appointment");
+                Console.WriteLine("07- Cancel An Appointment");
+                Console.WriteLine("08- Create Medical Record After Visit");
+                Console.WriteLine("09- Exit");
+
+                int option = int.Parse(Console.ReadLine());
+
+                switch (option)
+                {
+                    case 01:
+                        PatientRegistration(mainContext);
+
+                        break;
+
+                    case 02:
+                        AddNewDoctor(mainContext);
+
+                        break;
+
+                    case 03:
+                        ViewAllPatients(mainContext);
+
+                        break;
+
+                    case 04:
+                        ViewAllDoctorBySpecializtion(mainContext);
+
+                        break;
+
+                    case 05:
+                        AddAvailableTimeSlotForDoctor(mainContext);
+
+                        break;
+
+                    case 06:
+                        BookAnAppointment(mainContext);
+
+                        break;
+
+                    case 07:
+                        CancelAnAppointment(mainContext);
+
+                        break;
+
+                    case 08:
+                        CreateMedicalRecordAfterVisit(mainContext);
+
+                        break;
+
+                    case 09:
+                        exit = true;
+
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid option. Please try agin.");
+                        break;
+                }
+
+                Console.WriteLine("Press any key to continue....");
+                Console.ReadKey();
+                Console.Clear();
+            }
+        }
            
 
 
