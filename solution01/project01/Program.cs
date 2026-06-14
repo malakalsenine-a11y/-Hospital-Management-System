@@ -1,6 +1,10 @@
-﻿using project01.Model;
+﻿using project01;
+using project01.Model;
+using System.Net.NetworkInformation;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Channels;
+using System.Timers;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace project01
 {
@@ -149,9 +153,65 @@ namespace project01
             int idDoctor = int.Parse(Console.ReadLine());
 
 
+            bool found = false;
 
+            Console.WriteLine("Available Slots:");
 
+            // اعرض مواعيد الدكتور الموجودة فقط
+            foreach (AvailableSlot slot in context.AvailableSlots)
+            {
+                if (slot.doctorId == idDoctor && slot.isBooked == false)
+                {
+                    Console.WriteLine($"Slot ID: {slot.slotId}");
+                    Console.WriteLine($"Date: {slot.slotDate}");
+                    Console.WriteLine($"Time: {slot.slotTime}");
+
+                    found = true;
+                }
+            }
+
+            //إذا ما فيه مواعيد متاحة
+                if (found == false)
+            {
+                Console.WriteLine("No available slots for this doctor.");
+                return;
+            }
+
+            // اختيار الموعد
+            Console.Write("Enter Slot ID: ");
+            int slotId = Convert.ToInt32(Console.ReadLine());
+
+            //البحث عن الموعد 
+                foreach (AvailableSlot slot in context.AvailableSlots)
+            {
+                if (slot.slotId == slotId)
+                {
+                    Appointment appointment = new Appointment();
+
+                    appointment.patientId = idPatient;
+                    appointment.doctorId = idDoctor;
+                    appointment.appointmentDate = slot.slotDate;
+                    appointment.appointmentTime = slot.slotTime;
+                    appointment.status = "Booked";
+
+                    context.Appointments.Add(appointment);
+
+                    // تحويل الموعد إلى محجوز
+                    slot.isBooked = true;
+
+                    Console.WriteLine("Appointment booked successfully.");
+
+                    return;
+                }
+            }
+
+            Console.WriteLine("Invalid Slot ID.");
         }
+
+
+
+
+        
         static void Main(string[] args)
         {
             //Data storge for the system
@@ -168,5 +228,10 @@ namespace project01
         }
     }
 }
+
+
+
+
+
 
 
