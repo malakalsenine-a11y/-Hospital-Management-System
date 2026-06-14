@@ -140,7 +140,7 @@ namespace project01
             });
 
 
-            Console.WriteLine($"The system confirms the slot has been added, Slot ID :{idSlot} with {doctorId} " );
+            Console.WriteLine($"TheSlot add successfully Slot ID :{idSlot} with {doctorId} " );
 
         }
 
