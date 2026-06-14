@@ -210,49 +210,94 @@ namespace project01
 
         public static void CancelAnAppointment(HospitalContext context)
         {
-            Console.WriteLine("Enter Appointment Id: ");
+            Console.WriteLine("Enter Appointment Id:");
             int idAppointment = int.Parse(Console.ReadLine());
 
-            foreach(var Appointment in context.Appointments)
-                
+            foreach (var appointment in context.Appointments)
             {
-                if (Appointment.appointmentId == idAppointment)
-                {  
-                    
-                if(Appointment.status == "Cancelled")
-                
-                    Console.WriteLine(" The Appointments already Cancelled");
+                if (appointment.appointmentId == idAppointment)
+                {
+                    if (appointment.status == "Cancelled")
+                    {
+                        Console.WriteLine("Appointment already cancelled.");
+                        return;
+                    }
+
+                    appointment.status = "Cancelled";
+
+                    Console.WriteLine("Appointment cancelled successfully.");
+                    return;
                 }
-
-                Appointment.status = "Cancelled";
-
-
             }
 
-
-            }
-        
-
+            Console.WriteLine("Appointment not found.");
+        }
 
 
-        
-        static void Main(string[] args)
+            
+
+        public static void CreateMedicalRecordAfterVisit(HospitalContext context)
         {
-            //Data storge for the system
-            HospitalContext mainContext = new HospitalContext();
-            mainContext.Patients = new List<Patient>();
-            mainContext.Doctors = new List<Doctor>();
-            mainContext.Appointments = new List<Appointment>();
-            mainContext.MedicalRecords = new List<MedicalRecord>();
-            mainContext.AvailableSlots = new List<AvailableSlot>();
+            Console.WriteLine("Enter Appointment Id");
+            int appointmentId = int.Parse(Console.ReadLine());
+
+            foreach (var appointment in context.Appointments)
+            {
+                if (appointment.appointmentId == appointmentId)
+                {
+                    Console.WriteLine("Enter Diagnosis:");
+                    string diagnosis = Console.ReadLine();
+
+                    Console.WriteLine("Enter Medication:");
+                    string medication = Console.ReadLine();
+
+                    Console.WriteLine("Enter Fee:");
+                    decimal fee = decimal.Parse(Console.ReadLine());
+
+                    context.MedicalRecords.Add(new MedicalRecord
+                    {
+                        appointmentId = appointmentId,
+                        diagnosis = diagnosis,
+                        prescription = medication,
+                        visitFee = fee
+                    });
+
+                    appointment.status = "Completed";
+
+                    Console.WriteLine("Medical record created successfully.");
+
+                    return;
+                }
+            }
+
+            Console.WriteLine("Appointment not found.");
+        }
+
+
+
+
+
+
+
+
+
+        static void Main(string[] args)
+{
+    //Data storge for the system
+    HospitalContext mainContext = new HospitalContext();
+    mainContext.Patients = new List<Patient>();
+    mainContext.Doctors = new List<Doctor>();
+    mainContext.Appointments = new List<Appointment>();
+    mainContext.MedicalRecords = new List<MedicalRecord>();
+    mainContext.AvailableSlots = new List<AvailableSlot>();
+}
+           
 
 
 
 
         }
     }
-}
-
 
 
 
