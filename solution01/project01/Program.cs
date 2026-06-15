@@ -48,7 +48,7 @@ namespace project01
                 patientBloodType = userBloodType
             });
 
-            Console.WriteLine("Patient Added Successfully with ID" +userId);
+            Console.WriteLine("Patient Added Successfully with ID"  + (userId) );
 
         
         }
@@ -73,7 +73,7 @@ namespace project01
 
             int doctorId = (context.Doctors.Count) + 1;
 
-            Console.WriteLine("Doctor Added Successfully with ID" + doctorId);
+            Console.WriteLine("Doctor Added Successfully with ID" +  ( doctorId) );
 
 
         }
@@ -89,7 +89,23 @@ namespace project01
 
                 else
                 {
-                    Console.WriteLine($" The Patien Id : {patient.patientId} , the name is : {patient.patientName}, the age is: {patient.patientAge}, the gender is: {patient.patientGender} , the phine number is: {patient.patientPhone}, the email is:{patient.patientEmail}, the Blood Type is: {patient.patientBloodType}  ");
+                    Console.WriteLine($" The Patien Id:   {patient.patientId}");
+
+                    Console.WriteLine($"The Name is:  {patient.patientName}");
+
+                    Console.WriteLine($"The Age is:   {patient.patientAge}");
+
+                    Console.WriteLine($"The Gender is:   {patient.patientGender}");
+
+                    Console.WriteLine($"The Phine number is:   {patient.patientPhone}");
+
+                    Console.WriteLine($"The Email is:  {patient.patientEmail}");
+
+                    Console.WriteLine($"The Blood Type is:   {patient.patientBloodType}");
+
+
+
+
                 }
             }
         }
@@ -103,18 +119,24 @@ namespace project01
 
             foreach (var doctor in context.Doctors)
             {
-                if(doctor.doctorSpecialization == theSpecialization)
+                if (doctor.doctorSpecialization == theSpecialization)
                 {
-                    Console.WriteLine($"The Doctor Id is: {doctor.doctorId} , The Name is : {doctor.doctorName} , The Doctor Email is : {doctor.doctorEmail} , The Doctor Phone is: {doctor.doctorPhone} , The Doctor Specialization : {doctor.doctorSpecialization} , The Doctor ConsultationFee {doctor.consultationFee}");
-                    found = true;
-                }
-                if (found == false)
-                {
-                    Console.WriteLine("No Doctot Found!");
+                    Console.WriteLine($"The Doctor Id is: {doctor.doctorId}");
+                    Console.WriteLine($" The Name is : {doctor.doctorName} ");
+                    Console.WriteLine($" The Doctor Email is : {doctor.doctorEmail}");
+                    Console.WriteLine($"The Doctor Phone is: {doctor.doctorPhone}");
+                    Console.WriteLine($"The Doctor Specialization : {doctor.doctorSpecialization} ");
+                    Console.WriteLine($"The Doctor ConsultationFee: {doctor.consultationFee}");
 
+                        found = true;
+                        }
+                        if (found == false)
+                        {
+                            Console.WriteLine("No Doctot Found!");
+
+                        }
+                    }
                 }
-            }
-        }
 
         public static void AddAvailableTimeSlotForDoctor(HospitalContext context)
         {
@@ -281,7 +303,7 @@ namespace project01
     mainContext.AvailableSlots = new List<AvailableSlot>();
 
             bool exit = false;
-            while(exit = false)
+            while(exit == false)
             {
 
                 Console.WriteLine("Welcome to the  Hospital Management System! ");
@@ -356,11 +378,7 @@ namespace project01
                 Console.Clear();
             }
         }
-           
-
-
-
-
+   
         }
     }
 
