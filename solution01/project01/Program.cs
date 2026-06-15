@@ -294,8 +294,9 @@ namespace project01
 
         static void Main(string[] args)
 {
-    //Data storge for the system
-    HospitalContext mainContext = new HospitalContext();
+
+            //Data storge for the system
+            HospitalContext mainContext = new HospitalContext();
     mainContext.Patients = new List<Patient>();
     mainContext.Doctors = new List<Doctor>();
     mainContext.Appointments = new List<Appointment>();
