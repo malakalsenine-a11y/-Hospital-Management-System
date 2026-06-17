@@ -11,7 +11,7 @@ namespace project01
     public class Program
     {
 
-        public static void PatientRegistration(HospitalContext context)
+        public static void PatientRegistration(List<Patient> patientsList)
         {
             //Patient information:
 
@@ -33,27 +33,31 @@ namespace project01
             Console.WriteLine("Enter Patient Blood Type: ");
             string userBloodType = Console.ReadLine();
 
-            int userId = (context.Patients.Count) + 1;
+            int userId = (patientsList.Count) + 1;
 
 
-            //add patient:
-            context.Patients.Add(new Patient
-            {
-                patientId = userId,
-                patientName = userName,
-                patientAge = userAge,
-                patientGender = userGender,
-                patientPhone = userPhone,
-                patientEmail = userEmail,
-                patientBloodType = userBloodType
-            });
 
-            Console.WriteLine("Patient Added Successfully with ID"  + (userId) );
+            patientsList.Add(new Patient
+                   (
+                
+                               userId,
+                              userName,
+                              userAge,
+                             userGender,
+                             userPhone,
+                             userEmail,
+                            userBloodType
 
-        
-        }
+                  ));
 
-        public static void AddNewDoctor(HospitalContext context)
+            PrintPatients(patientsList);
+
+                //Console.WriteLine("Patient Added Successfully with ID"  + (userId) );
+
+
+            }
+
+        public static void AddNewDoctor(List<Doctor> doctorsList)
         {
             Console.WriteLine("Enter Doctor Name: ");
             string nameDoctor = Console.ReadLine();
@@ -69,74 +73,121 @@ namespace project01
             string emailDoctor = Console.ReadLine();
 
             Console.WriteLine("Enter ConsultationFee: ");
-            string consultationFeeDoctor = Console.ReadLine();
+            decimal consultationFeeDoctor = decimal.Parse(Console.ReadLine());
 
-            int doctorId = (context.Doctors.Count) + 1;
+            int doctorId = (doctorsList.Count) + 1;
 
-            Console.WriteLine("Doctor Added Successfully with ID" +  ( doctorId) );
+            doctorsList.Add(new Doctor
+                (
+                doctorId,
+                nameDoctor,
+                specializationDoctor,
+                phoneDoctor,
+                emailDoctor,
+                consultationFeeDoctor
+                ));
+
+            PrintDoctors(doctorsList);
+
+            //Console.WriteLine("Doctor Added Successfully with ID" +  ( doctorId) );
 
 
         }
 
-        public static void ViewAllPatients (HospitalContext context)
+        public static void ViewAllPatients (List <Patient> patientList)
         {
-            foreach( var patient in context.Patients)
+            List<Patient> viweAllPatent = patientList.Where(a => a.patientId > 0).ToList();
+
+            if (viweAllPatent.Count > 0)
             {
-                if (patient.patientId == 0)
-                {
-                    Console.WriteLine("No Patient");
-                }
+                PrintPatients(viweAllPatent);
 
-                else
-                {
-                    Console.WriteLine($" The Patien Id:   {patient.patientId}");
-
-                    Console.WriteLine($"The Name is:  {patient.patientName}");
-
-                    Console.WriteLine($"The Age is:   {patient.patientAge}");
-
-                    Console.WriteLine($"The Gender is:   {patient.patientGender}");
-
-                    Console.WriteLine($"The Phine number is:   {patient.patientPhone}");
-
-                    Console.WriteLine($"The Email is:  {patient.patientEmail}");
-
-                    Console.WriteLine($"The Blood Type is:   {patient.patientBloodType}");
-
-
-
-
-                }
             }
+            else
+            {
+                Console.WriteLine("No patients found");
+            }
+
+
+            //foreach (var patient in context.Patients)
+            //{
+            //    if (patient.patientId == 0)
+            //    {
+            //        Console.WriteLine("No Patient");
+            //    }
+
+            //    else
+            //    {
+            //        Console.WriteLine($" The Patien Id:   {patient.patientId}");
+
+            //        Console.WriteLine($"The Name is:  {patient.patientName}");
+
+            //        Console.WriteLine($"The Age is:   {patient.patientAge}");
+
+            //        Console.WriteLine($"The Gender is:   {patient.patientGender}");
+
+            //        Console.WriteLine($"The Phine number is:   {patient.patientPhone}");
+
+            //        Console.WriteLine($"The Email is:  {patient.patientEmail}");
+
+            //        Console.WriteLine($"The Blood Type is:   {patient.patientBloodType}");
+
+
+
+
+            //    }
+            //}
         }
 
-        public static void ViewAllDoctorBySpecializtion(HospitalContext context)
+        public static void ViewAllDoctorBySpecializtion(List <Doctor> doctorsList)
         {
+
+            var doctors;
             Console.WriteLine("The Specialization: ");
             string theSpecialization = Console.ReadLine();
 
-            bool found = false;
+            //bool found = false;
 
-            foreach (var doctor in context.Doctors)
-            {
-                if (doctor.doctorSpecialization == theSpecialization)
-                {
-                    Console.WriteLine($"The Doctor Id is: {doctor.doctorId}");
-                    Console.WriteLine($" The Name is : {doctor.doctorName} ");
-                    Console.WriteLine($" The Doctor Email is : {doctor.doctorEmail}");
-                    Console.WriteLine($"The Doctor Phone is: {doctor.doctorPhone}");
-                    Console.WriteLine($"The Doctor Specialization : {doctor.doctorSpecialization} ");
-                    Console.WriteLine($"The Doctor ConsultationFee: {doctor.consultationFee}");
+            //foreach (var doctor in context.Doctors)
+            //{
+            //    if (doctor.doctorSpecialization == theSpecialization)
+            //    {
+            //        Console.WriteLine($"The Doctor Id is: {doctor.doctorId}");
+            //        Console.WriteLine($" The Name is : {doctor.doctorName} ");
+            //        Console.WriteLine($" The Doctor Email is : {doctor.doctorEmail}");
+            //        Console.WriteLine($"The Doctor Phone is: {doctor.doctorPhone}");
+            //        Console.WriteLine($"The Doctor Specialization : {doctor.doctorSpecialization} ");
+            //        Console.WriteLine($"The Doctor ConsultationFee: {doctor.consultationFee}");
 
-                        found = true;
-                        }
-                        if (found == false)
-                        {
-                            Console.WriteLine("No Doctot Found!");
+            //            found = true;
+            //            }
+            //            if (found == false)
+            //            {
+            //                Console.WriteLine("No Doctot Found!");
 
-                        }
-                    }
-                }
+            //            }
+            //        }
+        }
+
+
+
+        //public static void ViewAllDoctorBySpecializtion(HospitalContext context)
+        //{
+        //    Console.WriteLine("Enter Specialization:");
+        //    string specialization = Console.ReadLine();
+
+        //    var doctors = context.Doctors
+        //        .Where(d => d.doctorSpecialization == specialization)
+        //        .ToList();
+
+        //    if (!doctors.Any())
+        //    {
+        //        Console.WriteLine("No Doctor Found!");
+        //        return;
+        //    }
+
+        //    doctors.ForEach(d => Console.WriteLine(d));
+        //}
 
         public static void AddAvailableTimeSlotForDoctor(HospitalContext context)
         {
@@ -292,20 +343,61 @@ namespace project01
             Console.WriteLine("Appointment not found.");
         }
 
+        static void PrintPatients(List<Patient> PatientsList)
+        {
+            foreach (var X in PatientsList)
+            {
+                X.ShowData();
+            }
+        }
+
+        static void PrintDoctors(List<Doctor> doctorsList)
+        {
+            foreach (var P in doctorsList)
+            {
+                P.ShowData();
+            }
+        }
+
         static void Main(string[] args)
 {
 
             //Data storge for the system
             HospitalContext mainContext = new HospitalContext();
-    mainContext.Patients = new List<Patient>();
-    mainContext.Doctors = new List<Doctor>();
-    mainContext.Appointments = new List<Appointment>();
-    mainContext.MedicalRecords = new List<MedicalRecord>();
-    mainContext.AvailableSlots = new List<AvailableSlot>();
+
+            mainContext.Patients = new List<Patient>()
+                {
+                    new Patient(1, "Ahmed", 23, "Male", "9876543", "ahmed.gmail.com","O" ),
+                    new Patient(2, "Sara", 24, "Female", "987673", "sara.gmail.com","O" ),
+                    new Patient(3, "Khalid", 33, "Male", "9123456", "khalid.gmail.com","A" ),
+                    new Patient(4, "Ali", 36, "Male", "12345678", "ali.gmail.com","B" ),
+                    new Patient(5, "Noura", 28, "Female", "98221543", "noura.gmail.com","A" ),
+
+                };
+
+            mainContext.Doctors = new List<Doctor>()
+
+            {
+                new Doctor(1, "Hamed", "Diabetes", "9876543", "hamed.gmail.com", 15),
+                new Doctor(2, "Noof", "Heart", "987673", "noof.gmail.com", 25),
+                new Doctor(3, "Salah", "High blood pressure", "9123456", "salah.gmail.com", 30),
+                new Doctor(4, "Omar", "Chronic", "12345678", "omar.gmail.com", 22),
+                new Doctor(5, "Lina", "Heart", "98221543", "lina.gmail.com", 24),
+            }
+            ;
+
+
+            mainContext.Appointments = new List<Appointment>();
+                mainContext.MedicalRecords = new List<MedicalRecord>();
+                mainContext.AvailableSlots = new List<AvailableSlot>();
+
+
+
+
 
             bool exit = false;
-            while(exit == false)
-            {
+                while(exit == false)
+                {
 
                 Console.WriteLine("Welcome to the  Hospital Management System! ");
                 Console.WriteLine("Please select option:");
@@ -325,17 +417,17 @@ namespace project01
                 switch (option)
                 {
                     case 01:
-                        PatientRegistration(mainContext);
+                        PatientRegistration(mainContext.Patients);
 
                         break;
 
                     case 02:
-                        AddNewDoctor(mainContext);
+                        AddNewDoctor(mainContext.Doctors);
 
                         break;
 
                     case 03:
-                        ViewAllPatients(mainContext);
+                        ViewAllPatients(mainContext.Patients);
 
                         break;
 
