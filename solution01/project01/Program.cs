@@ -191,20 +191,45 @@ namespace project01
             //        }
         }
 
-
+        //=======================================================================
+        // --------- ** Add an Available Time Slot for a Doctor ** ----------
+        //=======================================================================
         public static void AddAvailableTimeSlotForDoctor(HospitalContext context)
         {
-            Console.WriteLine("Enter Doctor Id:");
+            Console.WriteLine("\n=== Add Available Slot for Doctor ===");
+
+            if (context.Doctors.Count == 0)
+            {
+                Console.WriteLine("No doctors in the system yet. Please add a doctor first.");
+                return;
+
+            }
+
+
+            Console.WriteLine("Available Doctors: ");
+            context.Doctors.ForEach(d =>
+            Console.WriteLine($" ID: {d.doctorId}  |  {d.doctorName}   | ({d.doctorSpecialization})")
+            );
+
+            Console.WriteLine("Enter doctor Id: ");
             int doctorId = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter Date:");
+
+            bool result = context.Doctors.Any(d => d.doctorId == doctorId);
+
+            if (result == false)
+            {
+                Console.WriteLine( "No doctor found with id");
+                return;
+            }
+
+            Console.WriteLine("Enter Date (e.g:: 2026-06-21) : ");
             string data = Console.ReadLine();
 
-            Console.WriteLine("Enter Time:");
+            Console.WriteLine("Enter Time (e.g::12:00 PM ): ");
             string time = Console.ReadLine();
 
-            int idSlot = (context.Patients.Count) + 1;
-
+            int idSlot = context.AvailableSlots.Count + 1;
 
             context.AvailableSlots.Add(new AvailableSlot
             {
@@ -214,7 +239,6 @@ namespace project01
                 slotTime = time,
                 isBooked = false
             });
-
 
             Console.WriteLine($"TheSlot add successfully Slot ID :{idSlot} with {doctorId} " );
 
