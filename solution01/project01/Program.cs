@@ -583,12 +583,47 @@ namespace project01
 
         }
 
-        static void PrintDoctors(List<Doctor> doctorsList)
+        //=======================================================================
+        // --------- ** Doctor Workload and Revenue Summary ** ----------
+        //=======================================================================
+        static void PrintDoctors(HospitalContext context)
         {
-            foreach (var P in doctorsList)
+            Console.WriteLine("\n=== Doctor Workload & Revenue Summary ===");
+
+            if (context.Appointments.Count == 0)
             {
-                P.ShowData();
+                Console.WriteLine("No appointments have been recorded yet.");
+                return;
             }
+
+            var summary = context.Doctors
+                .Select(d => new
+                {
+
+                    d.doctorId,
+                    d.doctorName,
+                    d.doctorSpecialization,
+
+                    completed = context.Appointments.Count(a => a.doctorId == d.doctorId && a.status == "Completed"),
+                    cancelled = context.Appointments.Count(a => a.doctorId == d.doctorId && a.status == "Cancelled"),
+                    totalRevenue = context.MedicalRecords
+                    .Where(r => r.doctorId == d.doctorId)
+                    .Sum(r => r.visitFee)
+
+                })
+                    .OrderByDescending(x => x.totalRevenue)
+                    .ToList();
+
+            Console.WriteLine("\n  Rank  | Doctor Name               | Specialization       | Completed | Cancelled | Total Revenue");
+            Console.WriteLine("  " + new string('-', 95));
+
+            for (int i = 0; i < summary.Count; i++)
+            {
+                var x = summary[i];
+                Console.WriteLine($"  #{i + 1,-5} | {x.doctorName,-25} | {x.doctorSpecialization,-20} |" +
+                                  $" {x.completed,-9} | {x.cancelled,-9} | {x.totalRevenue:C}");
+            }
+
         }
 
         static void Main(string[] args)
