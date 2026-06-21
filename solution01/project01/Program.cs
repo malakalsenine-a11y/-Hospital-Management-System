@@ -244,69 +244,129 @@ namespace project01
 
         }
 
+        //=======================================================================
+        // --------- ** Book an Appointment ** ----------
+        //=======================================================================
         public static void BookAnAppointment(HospitalContext context)
         {
-            Console.WriteLine("Enter Patient Id:");
+            Console.WriteLine("\n=== Book an Appointment ===");
+
+            Console.WriteLine("Enter your Patient Id:");
             int idPatient = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter Doctor Id:");
-            int idDoctor = int.Parse(Console.ReadLine());
-
-
-            bool found = false;
-
-            Console.WriteLine("Available Slots:");
-
-            // اعرض مواعيد الدكتور الموجودة فقط
-            foreach (AvailableSlot slot in context.AvailableSlots)
+            Patient patient = context.Patients.FirstOrDefault(p => p.patientId == idPatient);
+            
+            if(patient == null)
             {
-                if (slot.doctorId == idDoctor && slot.isBooked == false)
-                {
-                    Console.WriteLine($"Slot ID: {slot.slotId}");
-                    Console.WriteLine($"Date: {slot.slotDate}");
-                    Console.WriteLine($"Time: {slot.slotTime}");
-
-                    found = true;
-                }
-            }
-
-            //إذا ما فيه مواعيد متاحة
-                if (found == false)
-            {
-                Console.WriteLine("No available slots for this doctor.");
+                Console.WriteLine("Patient not found.");
                 return;
             }
 
-            // اختيار الموعد
-            Console.Write("Enter Slot ID: ");
-            int slotId = Convert.ToInt32(Console.ReadLine());
+            ViewAllDoctorBySpecializtion(context.Doctors);
 
-            //البحث عن الموعد 
-                foreach (AvailableSlot slot in context.AvailableSlots)
+            Console.WriteLine("Enter your  Doctor Id to book with:");
+            int idDoctor = int.Parse(Console.ReadLine());
+
+            Doctor doctor = context.Doctors.FirstOrDefault(d => d.doctorId == idDoctor);
+
+            if(doctor == null)
             {
-                if (slot.slotId == slotId)
-                {
-                    Appointment appointment = new Appointment();
-
-                    appointment.patientId = idPatient;
-                    appointment.doctorId = idDoctor;
-                    appointment.appointmentDate = slot.slotDate;
-                    appointment.appointmentTime = slot.slotTime;
-                    appointment.status = "Booked";
-
-                    context.Appointments.Add(appointment);
-
-                    // تحويل الموعد إلى محجوز
-                    slot.isBooked = true;
-
-                    Console.WriteLine("Appointment booked successfully.");
-
-                    return;
-                }
+                Console.WriteLine("Doctor not found>");
+                return;
             }
 
-            Console.WriteLine("Invalid Slot ID.");
+            List<AvailableSlot> openSlots = context.AvailableSlots.Where(s => s.doctorId == idDoctor && s.isBooked == false)
+                                                                  .ToList();
+
+            if(openSlots.Count == 0)
+            {
+                Console.WriteLine("No available slots for this doctor at the moment.");
+                return;
+            }
+
+            Console.WriteLine($"\n Available slot for Doctor. {doctor.doctorName}:");
+            openSlots.ForEach(s =>
+            Console.WriteLine($"Slot ID: {s.slotId}   |  Date: {s.slotDate}   |   Time{s.slotTime} ")
+
+            );
+
+            Console.WriteLine("Enter slot Id to book: ");
+            int slotId = int.Parse(Console.ReadLine());
+
+            AvailableSlot selectedSlot = openSlots.FirstOrDefault(s => s.slotId == slotId);
+
+            if(selectedSlot == null)
+            {
+                Console.WriteLine("Slot not found or already booked.");
+                return;
+            }
+
+            int appointmentId = context.Appointments.Count + 1;
+            context.Appointments.Add(new Appointment
+            {
+                appointmentId = appointmentId,
+                patientId = idPatient,
+                doctorId = idDoctor,
+                appointmentDate = selectedSlot.slotDate,
+                appointmentTime = selectedSlot.slotTime,
+                status = "Scheduled"
+            });
+
+            selectedSlot.isBooked = true;
+
+            Console.WriteLine($"Appointment booked successfully! Appointment ID: {appointmentId}" +
+                              $" | Date: {selectedSlot.slotDate} | Time: {selectedSlot.slotTime}");
         }
+        //    // اعرض مواعيد الدكتور الموجودة فقط
+        //    foreach (AvailableSlot slot in context.AvailableSlots)
+        //    {
+        //        if (slot.doctorId == idDoctor && slot.isBooked == false)
+        //        {
+        //            Console.WriteLine($"Slot ID: {slot.slotId}");
+        //            Console.WriteLine($"Date: {slot.slotDate}");
+        //            Console.WriteLine($"Time: {slot.slotTime}");
+
+        //            found = true;
+        //        }
+        //    }
+
+        //    //إذا ما فيه مواعيد متاحة
+        //        if (found == false)
+        //    {
+        //        Console.WriteLine("No available slots for this doctor.");
+        //        return;
+        //    }
+
+        //    // اختيار الموعد
+        //    Console.Write("Enter Slot ID: ");
+        //    int slotId = Convert.ToInt32(Console.ReadLine());
+
+        //    //البحث عن الموعد 
+        //        foreach (AvailableSlot slot in context.AvailableSlots)
+        //    {
+        //        if (slot.slotId == slotId)
+        //        {
+        //            Appointment appointment = new Appointment();
+
+        //            appointment.patientId = idPatient;
+        //            appointment.doctorId = idDoctor;
+        //            appointment.appointmentDate = slot.slotDate;
+        //            appointment.appointmentTime = slot.slotTime;
+        //            appointment.status = "Booked";
+
+        //            context.Appointments.Add(appointment);
+
+        //            // تحويل الموعد إلى محجوز
+        //            slot.isBooked = true;
+
+        //            Console.WriteLine("Appointment booked successfully.");
+
+        //            return;
+        //        }
+        //    }
+
+        //    Console.WriteLine("Invalid Slot ID.");
+        //}
 
         public static void CancelAnAppointment(HospitalContext context)
         {
