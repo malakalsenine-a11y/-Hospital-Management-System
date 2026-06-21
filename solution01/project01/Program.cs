@@ -434,41 +434,103 @@ namespace project01
             Console.WriteLine("Appointment not found.");
         }
 
+        //=======================================================================
+        // --------- ** Create a Medical Record After a Visit ** ----------
+        //=======================================================================
         public static void CreateMedicalRecordAfterVisit(HospitalContext context)
         {
+
+            Console.WriteLine("\n=== Create Medical Record ===");
+
             Console.WriteLine("Enter Appointment Id");
             int appointmentId = int.Parse(Console.ReadLine());
 
-            foreach (var appointment in context.Appointments)
+            Appointment appointment = context.Appointments.FirstOrDefault(a => a.appointmentId == appointmentId);
+
+            if (appointment == null)
             {
-                if (appointment.appointmentId == appointmentId)
-                {
-                    Console.WriteLine("Enter Diagnosis:");
-                    string diagnosis = Console.ReadLine();
-
-                    Console.WriteLine("Enter Medication:");
-                    string medication = Console.ReadLine();
-
-                    Console.WriteLine("Enter Fee:");
-                    decimal fee = decimal.Parse(Console.ReadLine());
-
-                    context.MedicalRecords.Add(new MedicalRecord
-                    {
-                        appointmentId = appointmentId,
-                        diagnosis = diagnosis,
-                        prescription = medication,
-                        visitFee = fee
-                    });
-
-                    appointment.status = "Completed";
-
-                    Console.WriteLine("Medical record created successfully.");
-
-                    return;
-                }
+                Console.WriteLine("Appointment not found.");
+                return;
             }
 
-            Console.WriteLine("Appointment not found.");
+            if (appointment.status == "Cancelled")
+            {
+                Console.WriteLine("Cannot create a medical recprd for a cancelled appointment ");
+                return;
+
+            }
+
+            if (appointment.status == "Completed")
+            {
+                Console.WriteLine("A medical record already exists for this appointment.");
+                return;
+
+            }
+
+            decimal fee = context.Doctors
+                 .Where(d => d.doctorId == appointment.doctorId)
+                 .Select(d => d.consultationFee)
+                 .FirstOrDefault();
+
+            Console.WriteLine("Enter Diagnosis:");
+            string diagnosis = Console.ReadLine();
+
+            Console.WriteLine("Enter Medication / prescription:");
+            string medication = Console.ReadLine();
+
+            Console.WriteLine("Enter visit date(e.g:: 2026-06-22): ");
+            string visitData = Console.ReadLine();
+
+            int recordId = context.MedicalRecords.Count + 1;
+
+            context.MedicalRecords.Add(new MedicalRecord
+            {
+                recordId = recordId,
+                patientId = appointment.appointmentId,
+                doctorId = appointment.doctorId,
+                appointmentId = appointmentId,
+                diagnosis = diagnosis,
+                prescription = medication,
+                visitDate = visitData,
+                visitFee = fee
+
+            });
+
+            appointment.status = "Completed";
+            Console.WriteLine($"Medical record created successfully. Record Id: {recordId}" +
+                              $" |  Fee charged: {fee}");
+
+
+            //foreach (var appointment in context.Appointments)
+            //{
+            //    if (appointment.appointmentId == appointmentId)
+            //    {
+            //        Console.WriteLine("Enter Diagnosis:");
+            //        string diagnosis = Console.ReadLine();
+
+            //        Console.WriteLine("Enter Medication:");
+            //        string medication = Console.ReadLine();
+
+            //        Console.WriteLine("Enter Fee:");
+            //        decimal fee = decimal.Parse(Console.ReadLine());
+
+            //        context.MedicalRecords.Add(new MedicalRecord
+            //        {
+            //            appointmentId = appointmentId,
+            //            diagnosis = diagnosis,
+            //            prescription = medication,
+            //            visitFee = fee
+            //        });
+
+            //        appointment.status = "Completed";
+
+            //        Console.WriteLine("Medical record created successfully.");
+
+            //        return;
+            //    }
+            //}
+
+            //Console.WriteLine("Appointment not found.");
         }
 
         static void PrintPatients(List<Patient> PatientsList)
