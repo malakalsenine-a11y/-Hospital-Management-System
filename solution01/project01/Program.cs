@@ -142,12 +142,31 @@ namespace project01
             //}
         }
 
+        //=======================================================================
+        // --------- ** View All Doctors by Specialization ** ----------
+        //=======================================================================
         public static void ViewAllDoctorBySpecializtion(List <Doctor> doctorsList)
         {
+            Console.WriteLine("\n=== Search Doctors by Specialization ===");
 
-            var doctors;
-            Console.WriteLine("The Specialization: ");
-            string theSpecialization = Console.ReadLine();
+            Console.WriteLine("The Specialization is: ");
+            string theSpecialization = Console.ReadLine().ToLower();
+
+
+            List<Doctor> matched = doctorsList.Where(d => d.doctorSpecialization.ToLower() == theSpecialization).ToList();
+            if (matched.Count == 0)
+            {
+                Console.WriteLine($"No doctors found with specialization '{theSpecialization}'. ");
+                return;
+            }
+
+            foreach( Doctor doctor in matched)
+            {
+                Console.WriteLine("Doctor ID= " + doctor.doctorId + "Doctor Name: " + doctor.doctorName );
+            }
+
+            matched.ForEach(Doctor => Console.WriteLine("Doctor ID= " + Doctor.doctorId + "Doctor Name: " + Doctor.doctorName));
+
 
             //bool found = false;
 
@@ -172,25 +191,6 @@ namespace project01
             //        }
         }
 
-
-
-        //public static void ViewAllDoctorBySpecializtion(HospitalContext context)
-        //{
-        //    Console.WriteLine("Enter Specialization:");
-        //    string specialization = Console.ReadLine();
-
-        //    var doctors = context.Doctors
-        //        .Where(d => d.doctorSpecialization == specialization)
-        //        .ToList();
-
-        //    if (!doctors.Any())
-        //    {
-        //        Console.WriteLine("No Doctor Found!");
-        //        return;
-        //    }
-
-        //    doctors.ForEach(d => Console.WriteLine(d));
-        //}
 
         public static void AddAvailableTimeSlotForDoctor(HospitalContext context)
         {
