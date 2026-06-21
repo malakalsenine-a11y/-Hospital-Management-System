@@ -34,14 +34,18 @@ namespace project01.Model
             patientBloodType = userBloodType;
         }
 
-        public override string ToString() =>
-            $" [{patientId}] {patientName, -10}|{patientAge, -8}|{patientGender, -8}|{patientPhone, -8}|{patientEmail,9 }|{patientBloodType: F2}";
+        //public override string ToString() =>
+        //    $" [{patientId}] {patientName, -10}|{patientAge, -8}|{patientGender, -8}|{patientPhone, -8}|{patientEmail,9 }|{patientBloodType: F2}";
 
-        public static void ShowData()
+        public  void ShowData()
         {
-            Console.WriteLine($"Patient Added Successfully with ID" + patientId);
+            Console.WriteLine("\n ==== Patient Added Successfully  ====");
+
+            Console.WriteLine($"The patient ID is : {patientId}   |  The Name: {patientName}  |  The Age: {patientAge}" +
+                                                $" | The Gender: {patientGender}  |   The Blood Type: {patientBloodType}" +
+                                                $" | The Phone: {patientPhone}   |  The Email: {patientEmail} " );
         }
-        
-       
+
+
+    }
 }
-        }

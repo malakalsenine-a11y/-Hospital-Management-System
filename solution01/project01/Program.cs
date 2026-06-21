@@ -1,19 +1,25 @@
 ﻿using project01;
 using project01.Model;
 using System.Net.NetworkInformation;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Channels;
 using System.Timers;
+using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace project01
 {
     public class Program
     {
-
+        //-------------------------------------------
+        // --------- Patient Registration ----------
+        //-------------------------------------------
         public static void PatientRegistration(List<Patient> patientsList)
         {
             //Patient information:
+
+            Console.WriteLine("\n ==== Register New Patient === ");
 
             Console.WriteLine("Enter Patient Name: ");
             string userName = Console.ReadLine();
@@ -35,27 +41,11 @@ namespace project01
 
             int userId = (patientsList.Count) + 1;
 
+            patientsList.Add(new Patient(userId, userName, userAge, userGender, userPhone, userBloodType, userEmail));
+            Console.WriteLine($"Patient registered successfully. Assigned ID: {userId} ");
 
 
-            patientsList.Add(new Patient
-                   (
-                
-                               userId,
-                              userName,
-                              userAge,
-                             userGender,
-                             userPhone,
-                             userEmail,
-                            userBloodType
-
-                  ));
-
-            PrintPatients(patientsList);
-
-                //Console.WriteLine("Patient Added Successfully with ID"  + (userId) );
-
-
-            }
+        }
 
         public static void AddNewDoctor(List<Doctor> doctorsList)
         {

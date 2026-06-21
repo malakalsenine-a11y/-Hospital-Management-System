@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "project01\\Program.cs",
               "ToolTip": "C:\\Users\\malak\\OneDrive\\Desktop\\Hospital Management System\\solution01\\project01\\Program.cs",
               "RelativeToolTip": "project01\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAI0AAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAF4BAAAAAAAAAAAYwG0BAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-11T05:35:58.467Z",
               "IsPinned": true,
@@ -69,8 +69,7 @@
               "RelativeToolTip": "project01\\Model\\Patient.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAjwCkAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-17T05:08:06.042Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T05:08:06.042Z"
             },
             {
               "$type": "Document",
@@ -82,8 +81,7 @@
               "RelativeToolTip": "project01\\Model\\Appointment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-14T09:35:04.31Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-14T09:35:04.31Z"
             },
             {
               "$type": "Document",
@@ -95,8 +93,7 @@
               "RelativeToolTip": "project01\\Model\\MedicalRecord.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwBgAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-14T09:25:53.261Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-14T09:25:53.261Z"
             }
           ]
         }
