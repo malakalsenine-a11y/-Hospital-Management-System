@@ -93,20 +93,24 @@ namespace project01
 
         }
 
+        //==================================================
+        // --------- ** View All Patients ** ----------
+        //==================================================
         public static void ViewAllPatients (List <Patient> patientList)
         {
-            List<Patient> viweAllPatent = patientList.Where(a => a.patientId > 0).ToList();
 
-            if (viweAllPatent.Count > 0)
+            Console.WriteLine("\n=== All Registered Patients ===");
+
+            if (patientList.Count == 0)
             {
-                PrintPatients(viweAllPatent);
-
+                Console.WriteLine("No patients have been registerd yet.");
+                return;
             }
-            else
+           
+            foreach(Patient P in patientList)
             {
-                Console.WriteLine("No patients found");
+                P.ShowData();
             }
-
 
             //foreach (var patient in context.Patients)
             //{
