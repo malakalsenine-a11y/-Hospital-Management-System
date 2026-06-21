@@ -12,9 +12,10 @@ namespace project01
 {
     public class Program
     {
-        //-------------------------------------------
-        // --------- Patient Registration ----------
-        //-------------------------------------------
+        //==================================================
+        // --------- ** Patient Registration ** ----------
+        //==================================================
+
         public static void PatientRegistration(List<Patient> patientsList)
         {
             //Patient information:
@@ -47,8 +48,15 @@ namespace project01
 
         }
 
+        //==================================================
+        // --------- ** Add a New Doctor ** ----------
+        //==================================================
+
         public static void AddNewDoctor(List<Doctor> doctorsList)
         {
+
+            Console.WriteLine("\n === Add New Doctor === ");
+
             Console.WriteLine("Enter Doctor Name: ");
             string nameDoctor = Console.ReadLine();
 
@@ -68,18 +76,19 @@ namespace project01
             int doctorId = (doctorsList.Count) + 1;
 
             doctorsList.Add(new Doctor
-                (
-                doctorId,
-                nameDoctor,
-                specializationDoctor,
-                phoneDoctor,
-                emailDoctor,
-                consultationFeeDoctor
-                ));
 
-            PrintDoctors(doctorsList);
+            {
 
-            //Console.WriteLine("Doctor Added Successfully with ID" +  ( doctorId) );
+                doctorId = doctorId,
+                doctorName = nameDoctor,
+                doctorSpecialization = specializationDoctor,
+                doctorPhone = phoneDoctor,
+                doctorEmail = emailDoctor
+
+            });
+
+
+            Console.WriteLine($"Doctor Added Successfully. Assigned ID: {doctorId}"); ;
 
 
         }

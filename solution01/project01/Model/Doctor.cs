@@ -21,22 +21,5 @@ namespace project01.Model
 
         public decimal consultationFee { get; set; }
 
-
-        public Doctor(int doctorId, string nameDoctor, string specializationDoctor, string phoneDoctor, string emailDoctor, decimal consultationFeeDoctor)
-        {
-            doctorId = doctorId;
-            doctorName = nameDoctor;
-            doctorSpecialization = specializationDoctor;
-            doctorPhone = phoneDoctor;
-            doctorEmail = emailDoctor;
-            consultationFee = consultationFeeDoctor;
-        }
-        public override string ToString() =>
-            $"[{doctorId}] {doctorName,-10} | {doctorSpecialization,-8} | {doctorPhone,-8} | {doctorEmail,-8} | {consultationFee,9:F2}";
-
-        public static void ShowData(int doctorId)
-        {
-            Console.WriteLine("Doctor Added Successfully with ID" + doctorId);
-        }
     }
 }
