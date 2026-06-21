@@ -381,19 +381,19 @@ namespace project01
 
             Appointment appointment = context.Appointments.FirstOrDefault(a => a.appointmentId == idAppointment);
 
-            if(appointment == null)
+            if (appointment == null)
             {
                 Console.WriteLine("Appointment not found.");
                 return;
-            }    
+            }
 
-            if(appointment.status == "Cancelled")
+            if (appointment.status == "Cancelled")
             {
                 Console.WriteLine("This appointment is already cancelled.");
                 return;
             }
 
-            if(appointment.status == "Completed")
+            if (appointment.status == "Completed")
             {
                 Console.WriteLine("Cannot cancel a completed appointment.");
                 return;
@@ -411,29 +411,30 @@ namespace project01
 
                 appointment.status = "Cancelled";
                 Console.WriteLine($"Appointment {idAppointment} has been cancelled and the time slot is now available again.");
-
-
-
-                foreach (var appointment in context.Appointments)
-                {
-                    if (appointment.appointmentId == idAppointment)
-                    {
-                        if (appointment.status == "Cancelled")
-                        {
-                            Console.WriteLine("Appointment already cancelled.");
-                            return;
-                        }
-
-                        appointment.status = "Cancelled";
-
-                        Console.WriteLine("Appointment cancelled successfully.");
-                        return;
-                    }
-                }
             }
-            Console.WriteLine("Appointment not found.");
-        }
 
+
+
+            //    foreach (var appointment in context.Appointments)
+            //    {
+            //        if (appointment.appointmentId == idAppointment)
+            //        {
+            //            if (appointment.status == "Cancelled")
+            //            {
+            //                Console.WriteLine("Appointment already cancelled.");
+            //                return;
+            //            }
+
+            //            appointment.status = "Cancelled";
+
+            //            Console.WriteLine("Appointment cancelled successfully.");
+            //            return;
+            //        }
+            //    }
+            //}
+            //Console.WriteLine("Appointment not found.");
+
+        }
         //=======================================================================
         // --------- ** Create a Medical Record After a Visit ** ----------
         //=======================================================================
@@ -631,6 +632,10 @@ namespace project01
 
             //Data storge for the system
             HospitalContext mainContext = new HospitalContext();
+            mainContext.Doctors = new List<Doctor>();
+            mainContext.Appointments = new List<Appointment>();
+            mainContext.MedicalRecords = new List<MedicalRecord>();
+            mainContext.AvailableSlots = new List<AvailableSlot>();
 
             mainContext.Patients = new List<Patient>()
                 {
@@ -642,33 +647,14 @@ namespace project01
 
                 };
 
-            mainContext.Doctors = new List<Doctor>()
-
-            {
-                new Doctor(1, "Hamed", "Diabetes", "9876543", "hamed.gmail.com", 15),
-                new Doctor(2, "Noof", "Heart", "987673", "noof.gmail.com", 25),
-                new Doctor(3, "Salah", "High blood pressure", "9123456", "salah.gmail.com", 30),
-                new Doctor(4, "Omar", "Chronic", "12345678", "omar.gmail.com", 22),
-                new Doctor(5, "Lina", "Heart", "98221543", "lina.gmail.com", 24),
-            }
-            ;
-
-
-            mainContext.Appointments = new List<Appointment>();
-                mainContext.MedicalRecords = new List<MedicalRecord>();
-                mainContext.AvailableSlots = new List<AvailableSlot>();
-
-
-
-
 
             bool exit = false;
                 while(exit == false)
                 {
 
-                Console.WriteLine("Welcome to the  Hospital Management System! ");
-                Console.WriteLine("Please select option:");
-
+                Console.WriteLine("\n========================================");
+                Console.WriteLine("   Hospital Management System");
+                Console.WriteLine("========================================");
                 Console.WriteLine("01- Patient Registration");
                 Console.WriteLine("02- Add New Doctor");
                 Console.WriteLine("03- View All Patients");
@@ -678,6 +664,9 @@ namespace project01
                 Console.WriteLine("07- Cancel An Appointment");
                 Console.WriteLine("08- Create Medical Record After Visit");
                 Console.WriteLine("09- Exit");
+                Console.WriteLine("========================================");
+                Console.Write("Select option: ");
+
 
                 int option = int.Parse(Console.ReadLine());
 
@@ -699,7 +688,7 @@ namespace project01
                         break;
 
                     case 04:
-                        ViewAllDoctorBySpecializtion(mainContext);
+                        ViewAllDoctorBySpecializtion(mainContext.Doctors);
 
                         break;
 
@@ -733,9 +722,14 @@ namespace project01
                         break;
                 }
 
-                Console.WriteLine("Press any key to continue....");
-                Console.ReadKey();
-                Console.Clear();
+                if (!exit)
+                {
+                    Console.WriteLine("Press any key to continue....");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+
+               
             }
         }
    
