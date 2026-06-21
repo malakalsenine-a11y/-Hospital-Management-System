@@ -533,12 +533,54 @@ namespace project01
             //Console.WriteLine("Appointment not found.");
         }
 
-        static void PrintPatients(List<Patient> PatientsList)
+        //=======================================================================
+        // --------- ** Generate a Patient Medical History Report ** ----------
+        //=======================================================================
+        static void PrintPatients(HospitalContext context)
         {
-            foreach (var X in PatientsList)
+            Console.WriteLine("\n=== Patient Medical History Report ===");
+
+            Console.Write("Enter patient ID: ");
+            int patientId = int.Parse(Console.ReadLine());
+
+            Patient patient = context.Patients.FirstOrDefault(p => p.patientId == patientId);
+
+            if(patient == null)
             {
-                X.ShowData();
+                Console.WriteLine("Patient not found.");
+                return;
             }
+
+            List<MedicalRecord> records = context.MedicalRecords
+                .Where(r => r.patientId == patientId)
+                .ToList();
+
+            if(records.Count == 0)
+            {
+                Console.WriteLine("No medical records found for this patient.");
+                return;
+            }
+
+            Console.WriteLine($"\n--- Medical History for {patient.patientName} (ID: {patientId}) ---");
+
+            records.ForEach(r =>
+            {
+                string doctorName = context.Doctors
+                  .Where(d => d.doctorId == r.doctorId)
+                  .Select(d => d.doctorName)
+                  .FirstOrDefault() ?? "Unknown";
+
+                Console.WriteLine($"\n  Record ID   : {r.doctorId}");
+                Console.WriteLine($"  Visit Date  : {r.visitDate}");
+                Console.WriteLine($"  Doctor      : {doctorName}");
+                Console.WriteLine($"  Diagnosis   : {r.diagnosis}");
+                Console.WriteLine($"  Prescription: {r.prescription}");
+                Console.WriteLine($"  Fee Charged : {r.visitFee}");
+            });
+
+            decimal totalCharged = records.Sum(r => r.visitFee);
+            Console.WriteLine($"\n Total Amount Charged: {totalCharged}");
+
         }
 
         static void PrintDoctors(List<Doctor> doctorsList)
